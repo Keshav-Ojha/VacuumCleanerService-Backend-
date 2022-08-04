@@ -1,8 +1,8 @@
 package com.examly.springapp.service;
 
-import com.examly.springapp.model.Center;
-
 import java.util.List;
+
+import com.examly.springapp.entity.Center;
 
 public interface CenterService {
     public Center addCenter(Center serviceCenter);

@@ -1,61 +1,43 @@
 package com.examly.springapp.controller;
 
-import com.examly.springapp.model.Login;
-import com.examly.springapp.model.Users;
-import com.examly.springapp.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-import java.util.Objects;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.examly.springapp.entity.Users;
+import com.examly.springapp.model.UserRegistrationForm;
+import com.examly.springapp.service.UserService;
+
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
+@Slf4j
 public class UserController {
-    // properties
+	
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private PasswordEncoder bcryptEncoder;
-
     // create user
     @PostMapping("/signup")
-    public String createUser(@RequestBody Users user) {
-        user.setPassword(bcryptEncoder.encode(user.getPassword()));
-        user.setUserType("USER");
-        return this.userService.createUser(user);
+    public String createUser(@RequestBody UserRegistrationForm userRegForm) {
+    	log.debug("User creation started. Details recived from user: {}", userRegForm);
+        String message = userService.createUser(userRegForm);
+        log.debug("New user created with details: {}",userRegForm);
+        return message;
     }
 
     // Return all User
-    @GetMapping("/allUser")
+    @GetMapping("admin/allUser")
     public List<Users> getUser() {
         return this.userService.getUser();
     }
 
-    // login
-    @PostMapping("/login")
-    public Users userLogin(@RequestBody Login login) {
-        List<Users> user = getUser();
-        for (Users u : user) {
-            if (login.getEmail().equals(u.getEmail()) && login.getPassword().equals(u.getPassword())) {
-                return u;
-            }
-        }
-        return null;
-    }
-
-    // update user
-    @PutMapping("/updateUser")
-
-    public Users updateUser(@RequestBody Users user) {
-        return this.userService.updateUser(user);
-    }
-
-    // delete user
-    @DeleteMapping("/deleteUser/{id}")
-    public String deleteUser(@PathVariable String id) {
-        return this.userService.deleteUser(Long.parseLong(id));
-    }
 }

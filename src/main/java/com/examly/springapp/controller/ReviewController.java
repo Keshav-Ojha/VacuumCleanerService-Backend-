@@ -1,6 +1,6 @@
 package com.examly.springapp.controller;
 
-import com.examly.springapp.model.Review;
+import com.examly.springapp.entity.Review;
 import com.examly.springapp.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

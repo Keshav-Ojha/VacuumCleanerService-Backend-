@@ -1,14 +1,15 @@
-package com.examly.springapp.model;
+package com.examly.springapp.entity;
 
 import lombok.*;
 import javax.persistence.*;
 
-import com.examly.springapp.model.Center;
+import com.examly.springapp.entity.Center;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Entity
 public class Slot {
 
@@ -35,12 +36,5 @@ public class Slot {
     private boolean seventeen;
 
     private boolean eighteen;
-
-    @Override
-    public String toString() {
-        return slotId + " " + date + " " + "Ten: " + ten + " Eleven: " + eleven + " Twelve: " + twelve + " Thirteen: " +
-                thirteen + " Fourteen: " + fourteen + " Fifteen: " + fifteen + " Sixteen: " + sixteen + " Seventeen: " +
-                seventeen + " Eighteen: " + eighteen;
-    }
-
+    
 }

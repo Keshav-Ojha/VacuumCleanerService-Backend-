@@ -1,8 +1,8 @@
 package com.examly.springapp.service;
 
-import com.examly.springapp.model.Review;
-
 import java.util.*;
+
+import com.examly.springapp.entity.Review;
 
 public interface ReviewService {
 

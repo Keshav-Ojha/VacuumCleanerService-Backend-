@@ -1,7 +1,8 @@
 package com.examly.springapp.repo;
 
-import com.examly.springapp.model.Center;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.examly.springapp.entity.Center;
 
 public interface CenterRepository extends JpaRepository<Center, Long> {
 }

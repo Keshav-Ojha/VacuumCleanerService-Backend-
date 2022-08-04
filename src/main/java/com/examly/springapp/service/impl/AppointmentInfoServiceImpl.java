@@ -2,16 +2,17 @@ package com.examly.springapp.service.impl;
 
 import com.examly.springapp.controller.CenterController;
 import com.examly.springapp.controller.UserController;
-import com.examly.springapp.model.AppointmentInfo;
-import com.examly.springapp.model.Center;
-import com.examly.springapp.model.Users;
+import com.examly.springapp.entity.AppointmentInfo;
+import com.examly.springapp.entity.Center;
+import com.examly.springapp.entity.Slot;
+import com.examly.springapp.entity.Users;
 import com.examly.springapp.repo.AppointmentInfoRepository;
 import com.examly.springapp.repo.CenterRepository;
 import com.examly.springapp.repo.UserRepository;
 import com.examly.springapp.service.AppointmentInfoService;
 import com.examly.springapp.service.CenterService;
 import com.examly.springapp.service.SlotService;
-import com.examly.springapp.model.Slot;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

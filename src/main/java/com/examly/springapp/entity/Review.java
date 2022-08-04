@@ -1,11 +1,13 @@
-package com.examly.springapp.model;
+package com.examly.springapp.entity;
 
 import lombok.*;
 import javax.persistence.*;
-import com.examly.springapp.model.Center;
-import com.examly.springapp.model.Users;
+
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+
+import com.examly.springapp.entity.Center;
+import com.examly.springapp.entity.Users;
 
 @Getter
 @Setter
@@ -22,7 +24,6 @@ public class Review {
     @ManyToOne
     Users user;
 
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @ManyToOne(cascade=CascadeType.ALL)
     Center center;
 }

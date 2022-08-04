@@ -1,23 +1,26 @@
-package com.examly.springapp.model;
+package com.examly.springapp.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
+
+import com.examly.springapp.entity.Slot;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import com.examly.springapp.model.Slot;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Table(name = "servicecenter")
 public class Center {
     @Id
@@ -37,12 +40,6 @@ public class Center {
     @JoinColumn(name = "center_id")
     private List<Slot> slots;
 
-    // @OneToMany(targetEntity = AppointmentInfo.class, cascade = CascadeType.ALL,
-    // fetch = FetchType.LAZY)
-    // @JoinColumn(name = "center_id_join")
-    // private List<AppoinmentInfo> appointments;
-
-    // Mapping with AppointmentInfo Table
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "service_center_ids", referencedColumnName = "serviceCenterId")
     List<AppointmentInfo> appointmentInfo = new ArrayList<>();
@@ -51,7 +48,7 @@ public class Center {
     public void initSlots() {
         LocalDate startDate = LocalDate.now();
         slots = new ArrayList<>();
-        for (int i = 0; i < 90; i++) {
+        for (int i = 0; i < 180; i++) {
             Slot slot = new Slot();
             LocalDate nextDate = startDate.plusDays(1);
             startDate = nextDate;

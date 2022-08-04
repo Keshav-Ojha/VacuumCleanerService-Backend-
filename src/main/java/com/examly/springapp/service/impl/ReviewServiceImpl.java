@@ -1,12 +1,15 @@
 package com.examly.springapp.service.impl;
 
-import com.examly.springapp.service.ReviewService;
-import com.examly.springapp.model.Review;
-import com.examly.springapp.repo.ReviewRepository;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import com.examly.springapp.entity.Review;
+import com.examly.springapp.exceptions.BusinessException;
+import com.examly.springapp.repo.ReviewRepository;
+import com.examly.springapp.service.ReviewService;
 
 @Service
 public class ReviewServiceImpl implements ReviewService {
@@ -22,14 +25,9 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public Review deleteReview(long id) {
-        List<Review> allReviews = this.reviewRepository.findAll();
-        Review deletedReview = null;
-        for (Review review : allReviews) {
-            if (review.getReviewId() == id) {
-                this.reviewRepository.delete(review);
-                deletedReview = review;
-            }
-        }
+    	Optional<Review> optional = reviewRepository.findById(id);
+    	Review deletedReview = optional.orElseThrow(()-> new BusinessException("Review with id "+id+" was not found."));
+    	reviewRepository.delete(deletedReview);
         return deletedReview;
     }
 

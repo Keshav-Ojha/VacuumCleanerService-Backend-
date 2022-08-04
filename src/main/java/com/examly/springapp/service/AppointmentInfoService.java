@@ -1,8 +1,9 @@
 package com.examly.springapp.service;
 
-import com.examly.springapp.model.AppointmentInfo;
-//import com.examly.springapp.model.Center;
+//import com.examly.springapp.entity.Center;
 import java.util.List;
+
+import com.examly.springapp.entity.AppointmentInfo;
 
 public interface AppointmentInfoService {
     AppointmentInfo addAppointment(AppointmentInfo appointmentInfo);

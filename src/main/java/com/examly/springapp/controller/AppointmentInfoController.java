@@ -1,8 +1,7 @@
 package com.examly.springapp.controller;
 
-import com.examly.springapp.model.AppointmentInfo;
-
-import com.examly.springapp.model.Center;
+import com.examly.springapp.entity.AppointmentInfo;
+import com.examly.springapp.entity.Center;
 import com.examly.springapp.repo.CenterRepository;
 import com.examly.springapp.service.AppointmentInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,7 @@ public class AppointmentInfoController {
     }
 
     // Return all appointments details
-    @GetMapping("/getAppointments")
+    @GetMapping("/admin/getAppointments")
     public List<AppointmentInfo> getAppointments() {
         return this.appointmentInfoService.allAppointments();
     }

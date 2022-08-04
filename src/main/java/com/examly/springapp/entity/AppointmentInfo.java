@@ -1,4 +1,4 @@
-package com.examly.springapp.model;
+package com.examly.springapp.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

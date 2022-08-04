@@ -1,4 +1,4 @@
-package com.examly.springapp.model;
+package com.examly.springapp.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,7 +20,12 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long userId;
 
-    private String userType;
+    @Column(nullable=false)
+    private String roles = "ROLE_USER";
+    
+    @Column(nullable=false)
+    private boolean active = true;
+    
     @Column(nullable = false)
     private String name;
 
@@ -32,9 +37,6 @@ public class Users {
 
     @Column(nullable = false)
     private String password;
-
-    @Transient
-    private String confirmPassword;
 
     // Mapping with AppointmentInfo Table
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)

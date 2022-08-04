@@ -1,7 +1,7 @@
 package com.examly.springapp.service.impl;
 
-import com.examly.springapp.model.Slot;
 import com.examly.springapp.service.SlotService;
+import com.examly.springapp.entity.Slot;
 import com.examly.springapp.repo.SlotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
