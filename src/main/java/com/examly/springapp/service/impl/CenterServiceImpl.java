@@ -57,7 +57,7 @@ public class CenterServiceImpl implements CenterService {
 
         serviceCenterRepository.save(myCenter);
 
-        log.trace("Service center saved succesfully." + serviceCenter);
+        log.trace("Service center saved successfully." + serviceCenter);
 
         return myCenter;
     }
