@@ -36,36 +36,9 @@ public class Center {
     private String email;
     private String description;
 
-    @OneToMany(targetEntity = Slot.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "center_id")
-    private List<Slot> slots;
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "service_center_ids", referencedColumnName = "serviceCenterId")
+    @OneToMany(mappedBy = "center",cascade = CascadeType.ALL, orphanRemoval = true)
     List<AppointmentInfo> appointmentInfo = new ArrayList<>();
 
-    // slots initialization for every center
-    public void initSlots() {
-        LocalDate startDate = LocalDate.now();
-        slots = new ArrayList<>();
-        for (int i = 0; i < 180; i++) {
-            Slot slot = new Slot();
-            LocalDate nextDate = startDate.plusDays(1);
-            startDate = nextDate;
-            DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
-            String date = nextDate.format(formatter);
-            slot.setDate(date);
-            slot.setTen(true);
-            slot.setEleven(true);
-            slot.setTwelve(true);
-            slot.setThirteen(true);
-            slot.setFourteen(true);
-            slot.setFifteen(true);
-            slot.setSixteen(true);
-            slot.setSeventeen(true);
-            slot.setEighteen(true);
-            slots.add(slot);
-        }
-    }
+
 
 }

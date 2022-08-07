@@ -17,15 +17,18 @@ public class AppointmentInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long appointmentId;
-    private long userId;
-    private long serviceCenterId;
+
+    @ManyToOne
+    private Users user;
+
+    @ManyToOne
+    private Center center;
+
     private String productName;
     private String purchaseDate;
     private String productModelNo;
     private String problemStatement;
     private String bookingDate;
     private String bookingTime;
-    private String userName;
-    private String centerName;
-    private String paymentDone;
+    private Boolean paymentDone;
 }

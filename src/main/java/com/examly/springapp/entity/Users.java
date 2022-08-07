@@ -39,8 +39,7 @@ public class Users {
     private String password;
 
     // Mapping with AppointmentInfo Table
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "user_ids", referencedColumnName = "userId")
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     List<AppointmentInfo> appointmentInfo = new ArrayList<>();
 
 }
