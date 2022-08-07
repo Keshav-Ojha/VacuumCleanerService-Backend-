@@ -18,21 +18,18 @@ import java.util.List;
 @Service
 @Slf4j
 public class CenterServiceImpl implements CenterService {
-		
+
     @Autowired
     private CenterRepository serviceCenterRepository;
 
     @Override
     public Center addCenter(Center serviceCenter) {
-        serviceCenter.initSlots();
         return this.serviceCenterRepository.save(serviceCenter);
     }
 
     @Override
     public Center getCenter(long id) {
-
         Optional<Center> center = serviceCenterRepository.findById(id);
-
         return center.orElseThrow(() -> new BusinessException("Service center with id "+id+"was not found."));
 
     }
@@ -57,7 +54,6 @@ public class CenterServiceImpl implements CenterService {
         myCenter.setEmail(serviceCenter.getEmail());
         myCenter.setImgUrl(serviceCenter.getImgUrl());
         myCenter.setDescription(serviceCenter.getDescription());
-        myCenter.setSlots(serviceCenter.getSlots());
 
         serviceCenterRepository.save(myCenter);
 
