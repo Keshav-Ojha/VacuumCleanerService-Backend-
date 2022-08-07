@@ -13,15 +13,20 @@ import com.examly.springapp.service.AppointmentInfoService;
 import com.examly.springapp.service.CenterService;
 import com.examly.springapp.service.SlotService;
 
+import ch.qos.logback.classic.Logger;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
+@Slf4j
 public class AppointmentInfoServiceImpl implements AppointmentInfoService {
     @Autowired
     private AppointmentInfoRepository appointmentInfoRepository;
+    
     @Autowired
     private UserRepository userRepository;
 
@@ -30,10 +35,13 @@ public class AppointmentInfoServiceImpl implements AppointmentInfoService {
 
     @Autowired
     private SlotService slotService;
+    
     @Autowired
     private CenterRepository centerRepository;
+    
     @Autowired
     private CenterController centerController;
+    
     @Autowired
     private UserController userController;
 
@@ -41,7 +49,7 @@ public class AppointmentInfoServiceImpl implements AppointmentInfoService {
     public AppointmentInfo addAppointment(AppointmentInfo appointmentInfo) {
 
         // adding Slot into appointmentInfo table
-        System.out.println("Function execution started----------------------------");
+        log.debug("Adding appointment value recived in service class: " + appointmentInfo);
 
         long centerId = appointmentInfo.getServiceCenterId();
 
@@ -83,15 +91,17 @@ public class AppointmentInfoServiceImpl implements AppointmentInfoService {
                     toUpdateSlot.setEighteen(false);
                     break;
                 default:
-                    System.out.println("\n\n***********None of the cases matched********\n\n");
+                    log.debug("\n\n***********None of the cases matched********\n\n");
             }
 
-            System.out.println("Slot after change: " + toUpdateSlot);
+            log.debug("Slot after change: " + toUpdateSlot);
+            
 
             slotService.editSlot(toUpdateSlot);
         }
 
-        System.out.println("Function execution done------------------------------------------");
+        log.debug("Function execution done------------------------------------------");
+        
         appointmentInfo.setPaymentDone("no");
         this.appointmentInfoRepository.save(appointmentInfo);
 
@@ -213,7 +223,7 @@ public class AppointmentInfoServiceImpl implements AppointmentInfoService {
                     toDeleteSlot.setEighteen(true);
                     break;
                 default:
-                    System.out.println("\n\n***********None of the cases matched********\n\n");
+                    log.debug("\n\n***********None of the cases matched********\n\n");
             }
 
             slotService.editSlot(toDeleteSlot);
@@ -285,7 +295,7 @@ public class AppointmentInfoServiceImpl implements AppointmentInfoService {
                     slot.setEighteen(value);
                     break;
                 default:
-                    System.out.println("\n\n***********None of the cases matched********\n\n");
+                    log.debug("\n\n***********None of the cases matched********\n\n");
             }
         }
         return slot;
