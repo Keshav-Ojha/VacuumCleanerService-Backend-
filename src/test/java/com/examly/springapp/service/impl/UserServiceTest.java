@@ -1,4 +1,4 @@
-package com.examly.springapp.service;
+package com.examly.springapp.service.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.examly.springapp.model.UserRegistrationForm;
+import com.examly.springapp.service.UserService;
 
 @SpringBootTest
 @Transactional

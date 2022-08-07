@@ -1,4 +1,4 @@
-package com.examly.springapp.service;
+package com.examly.springapp.service.impl;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -9,6 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.examly.springapp.entity.AppointmentInfo;
+import com.examly.springapp.service.AppointmentInfoService;
+import com.examly.springapp.service.CenterService;
 
 @SpringBootTest
 @Transactional

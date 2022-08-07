@@ -36,4 +36,14 @@ public class AppointmentInfoServiceImpl implements AppointmentInfoService {
     public AppointmentInfo editPayment(long id) {
         return null;
     }
+
+    @Override
+    public AppointmentInfo deleteAppointment(long id) {
+        return null;
+    }
+
+    @Override
+    public List<AppointmentInfo> getAppointmentByUserId(long id) {
+        return null;
+    }
 }
