@@ -52,9 +52,9 @@ public class UserServiceImpl implements UserService {
         
         try {
             userRepository.save(user);
-            return "User created succesfully";
+            return "User created successfully";
         } catch (Exception e) {
-            return "User creation failed. Try Again";
+            throw new BusinessException("Unwanted Exception occured: \n" + e);
         }
     }
 
