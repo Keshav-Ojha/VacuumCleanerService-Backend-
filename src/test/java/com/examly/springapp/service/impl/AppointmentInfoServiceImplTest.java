@@ -16,6 +16,7 @@ class AppointmentInfoServiceImplTest {
         AppointmentInfo obj = new AppointmentInfo();
         obj.setBookingDate("2022-08-14");
         obj.setBookingTime("10:00");
+        return obj;
     }
 
     @Test

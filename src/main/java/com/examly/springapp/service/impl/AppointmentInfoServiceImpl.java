@@ -76,7 +76,16 @@ public class AppointmentInfoServiceImpl implements AppointmentInfoService {
 
     @Override
     public AppointmentInfo deleteAppointment(long id) {
-        return null;
+        log.debug("Trying to delete appointment with id: " + id);
+        AppointmentInfo objToDelete = appointmentInfoRepository.getById(id);
+        try{
+            appointmentInfoRepository.delete(objToDelete);
+        }catch(Exception e){
+            log.error("Error while deleting appointment with id: " + id + "\nDetails: " + e.getStackTrace());
+            throw new BusinessException("Some unexpected exception occurred while trying to delete appointment with id"+ id);
+        }
+        log.debug("Successfully deleted appointment with id: " + id);
+        return objToDelete;
     }
 
     @Override
@@ -84,7 +93,7 @@ public class AppointmentInfoServiceImpl implements AppointmentInfoService {
         List<AppointmentInfo> responseList = null;
 
         try{
-            responseList = appointmentInfoRepository.findAllByUserId(id);
+            responseList = appointmentInfoRepository.findAllByUserUserId(id);
         }
         catch (Exception e){
             log.error("Unexpected error occurred while getting appointments of user with id: "

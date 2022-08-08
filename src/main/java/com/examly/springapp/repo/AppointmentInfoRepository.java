@@ -11,6 +11,5 @@ import java.util.List;
 @Repository
 public interface AppointmentInfoRepository extends JpaRepository<AppointmentInfo,Long> {
 
-    @Query(value = "SELECT * from appointment_info where user_user_id = :userId")
-    List<AppointmentInfo> findAllByUserId(Long userId);
+    List<AppointmentInfo> findAllByUserUserId(Long userId);
 }
