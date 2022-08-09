@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
             userRepository.save(user);
             return "User created successfully";
         } catch (Exception e) {
-            throw new BusinessException("Unwanted Exception occured: \n" + e);
+            throw new BusinessException("Unwanted Exception occurred: \n" + e);
         }
     }
 

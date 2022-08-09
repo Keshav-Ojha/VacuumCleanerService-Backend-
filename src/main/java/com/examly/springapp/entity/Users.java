@@ -1,5 +1,6 @@
 package com.examly.springapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,8 +40,8 @@ public class Users {
     private String password;
 
     // Mapping with AppointmentInfo Table
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "user_ids", referencedColumnName = "userId")
+    @JsonIgnore
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     List<AppointmentInfo> appointmentInfo = new ArrayList<>();
 
 }

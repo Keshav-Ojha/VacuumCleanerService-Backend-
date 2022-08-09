@@ -17,4 +17,6 @@ public interface AppointmentInfoService {
     public List<AppointmentInfo> getAppointmentByUserId(long id);
 
     public AppointmentInfo editPayment(long id);
+
+    List<AppointmentInfo> getAppointmentByCenterId(Long centerId);
 }
