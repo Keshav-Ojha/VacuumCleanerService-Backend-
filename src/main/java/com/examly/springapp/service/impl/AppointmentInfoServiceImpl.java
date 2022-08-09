@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -66,12 +67,29 @@ public class AppointmentInfoServiceImpl implements AppointmentInfoService {
 
     @Override
     public AppointmentInfo editAppointment(AppointmentInfo appointmentInfo, String id) {
-        return null;
+        Optional<AppointmentInfo> optional = appointmentInfoRepository.findById(Long.parseLong(id));
+        AppointmentInfo myAppointment = optional.orElseThrow(
+                ()->new BusinessException("Did not find appointment with id: " + id));
+
+        myAppointment.setBookingTime(appointmentInfo.getBookingTime());
+        myAppointment.setBookingDate(appointmentInfo.getBookingDate());
+        myAppointment.setCenter(appointmentInfo.getCenter());
+        myAppointment.setUser(appointmentInfo.getUser());
+        myAppointment.setProductName(appointmentInfo.getProductName());
+        myAppointment.setProductModelNo(appointmentInfo.getProductModelNo());
+        myAppointment.setPaymentDone(appointmentInfo.getPaymentDone());
+
+        return appointmentInfoRepository.save(myAppointment);
     }
 
     @Override
     public AppointmentInfo editPayment(long id) {
         return null;
+    }
+
+    @Override
+    public List<AppointmentInfo> getAppointmentByCenterId(Long centerId) {
+        return this.appointmentInfoRepository.findAllByCenterServiceCenterId(centerId);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.examly.springapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,9 +37,8 @@ public class Center {
     private String email;
     private String description;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "center",cascade = CascadeType.ALL, orphanRemoval = true)
     List<AppointmentInfo> appointmentInfo = new ArrayList<>();
-
-
 
 }

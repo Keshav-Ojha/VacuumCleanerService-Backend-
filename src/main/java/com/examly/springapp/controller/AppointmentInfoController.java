@@ -36,7 +36,7 @@ public class AppointmentInfoController {
     }
 
     // Return all appointments details by UserId
-    @GetMapping("/getAppointments/{id}")
+    @GetMapping("/user/appointmentInfo/{id}")
     public List<AppointmentInfo> getUserAppointments(@PathVariable String id) {
         long Id = Long.parseLong(id);
         return this.appointmentInfoService.getAppointmentByUserId(Id);
@@ -77,5 +77,10 @@ public class AppointmentInfoController {
         }
 
         return data;
+    }
+
+    @GetMapping("/center/appointmentInfo/{centerId}")
+    List<AppointmentInfo> getAppointmentByCenterId(@PathVariable Long centerId){
+        return this.appointmentInfoService.getAppointmentByCenterId(centerId);
     }
 }
