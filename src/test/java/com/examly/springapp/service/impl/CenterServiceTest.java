@@ -2,9 +2,7 @@ package com.examly.springapp.service.impl;
 
 import com.examly.springapp.entity.Center;
 import com.examly.springapp.service.CenterService;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,12 +14,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-class CenterServiceImplTest {
+class CenterServiceTest {
 
     @Autowired
-    CenterService centerService;
+    private CenterService centerService;
 
-    Center myCenter;
+    private Center myCenter;
 
     @BeforeEach
     void init(){
@@ -37,7 +35,6 @@ class CenterServiceImplTest {
     }
 
     @Test
-    @DisplayName("Test to add a new center")
     void addCenter() {
         Center center = new Center();
         center.setName("ABC Service Center");
@@ -51,14 +48,6 @@ class CenterServiceImplTest {
     }
 
     @Test
-    @DisplayName("Test get center by id")
-    void getCenter() {
-        Center center = centerService.getCenter(myCenter.getServiceCenterId());
-        assertEquals("XYZ Service Center",center.getName());
-    }
-
-    @Test
-    @DisplayName("Test get all center")
     void viewCenter() {
         List<Center> list = centerService.viewCenter();
         assertTrue(list.size()>=1);
@@ -70,6 +59,11 @@ class CenterServiceImplTest {
 
     @Test
     void deleteCenter() {
+    }
 
+    @Test
+    void getCenter() {
+        Center center = centerService.getCenter(myCenter.getServiceCenterId());
+        assertEquals("XYZ Service Center",center.getName());
     }
 }
