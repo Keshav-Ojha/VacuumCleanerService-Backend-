@@ -1,22 +1,18 @@
 package com.examly.springapp.service.impl;
 
-import com.examly.springapp.entity.AppointmentInfo;
-import com.examly.springapp.entity.Users;
-import com.examly.springapp.exceptions.BusinessException;
-import com.examly.springapp.repo.AppointmentInfoRepository;
-import com.examly.springapp.service.AppointmentInfoService;
-import com.examly.springapp.service.CenterService;
-import com.examly.springapp.service.SlotService;
-
-import ch.qos.logback.classic.Logger;
-import com.examly.springapp.service.UserService;
-import lombok.extern.slf4j.Slf4j;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import com.examly.springapp.entity.AppointmentInfo;
+import com.examly.springapp.exceptions.BusinessException;
+import com.examly.springapp.repo.AppointmentInfoRepository;
+import com.examly.springapp.service.AppointmentInfoService;
+import com.examly.springapp.service.UserService;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j

@@ -11,14 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 @Transactional
 class AppointmentInfoServiceImplTest {
 
-
-    private AppointmentInfo getAppointmentInfo(){
-        AppointmentInfo obj = new AppointmentInfo();
-        obj.setBookingDate("2022-08-14");
-        obj.setBookingTime("10:00");
-        return obj;
-    }
-
     @Test
     void addAppointment() {
     }
